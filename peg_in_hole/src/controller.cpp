@@ -109,6 +109,10 @@ int main(int argc, char** argv)
   pose_stamped.pose = target_pose;
   pose_stamped.pose.position.z = 0.2;
 
+
+// # The possible goal states for the model to plan for. Each element of
+// # the array defines a goal region. The goal is achieved
+// # if the constraints for a particular region are satisfied
   item1.req.goal_constraints.push_back(kinematic_constraints::constructGoalConstraints(std::string("panda_link7"), pose_stamped));
 
   auto item2 = item1;

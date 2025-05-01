@@ -1,0 +1,24 @@
+<mujoco model="hole2d">
+  <default>
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh"/>
+    </default>
+  </default>
+  <asset>
+    <mesh file="hole2d.obj"/>
+    <mesh file="hole2d_collision_0.obj"/>
+    <mesh file="hole2d_collision_1.obj"/>
+    <mesh file="hole2d_collision_2.obj"/>
+  </asset>
+  <worldbody>
+    <body name="hole2d">
+      <geom mesh="hole2d" class="visual"/>
+      <geom mesh="hole2d_collision_0" rgba="0.760960050857915 0.17919566051809177 0.7762123678389825 1" class="collision"/>
+      <geom mesh="hole2d_collision_1" rgba="0.34530643110773174 0.10382920962912479 0.5042066303697063 1" class="collision"/>
+      <geom mesh="hole2d_collision_2" rgba="0.84279958176868 0.5058154385209642 0.21178662241496538 1" class="collision"/>
+    </body>
+  </worldbody>
+</mujoco>
