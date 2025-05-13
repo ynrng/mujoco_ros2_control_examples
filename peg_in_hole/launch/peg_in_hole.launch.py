@@ -67,7 +67,7 @@ def generate_launch_description():
 
     # ros2_control config
     ros2_controllers_path = os.path.join(
-        get_package_share_directory("moveit_resources_panda_moveit_config"),
+        get_package_share_directory("toy_moveit_resources_panda_moveit_config"),
         "config",
         "ros2_controllers.yaml",
     )
@@ -79,7 +79,7 @@ def generate_launch_description():
         parameters=[
             moveit_config.robot_description,
             ros2_controllers_path,
-            {'mujoco_model_path':os.path.join(get_package_share_directory('panda_mujoco'), 'franka_emika_panda', 'scene.xml')},
+            {'mujoco_model_path':os.path.join(get_package_share_directory('toy_panda_mujoco'), 'franka_emika_panda', 'scene.xml')},
             {"use_sim_time": True}
         ]
     )
