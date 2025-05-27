@@ -27,5 +27,5 @@ source install/setup.bash
 ### Running demos
 ```
 ros2 launch interactive_marker interactive_marker.launch.py
-ros2 launch peg_in_hole peg_in_hole.launch.py
+ros2 launch toy_peg_in_hole toy_peg_in_hole.launch.py
 ```
