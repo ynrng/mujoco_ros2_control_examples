@@ -1,10 +1,9 @@
 
-#include <moveit/move_group_interface/move_group_interface.hpp>
-#include <moveit/planning_scene_interface/planning_scene_interface.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <control_msgs/action/gripper_command.hpp>
 #include <moveit_msgs/srv/get_motion_sequence.hpp>
-#include <moveit/kinematic_constraints/utils.hpp>
-#include <moveit/utils/moveit_error_code.hpp>
+#include <moveit/kinematic_constraints/utils.h>
 
 using namespace std::chrono_literals;
 
@@ -82,7 +81,7 @@ int main(int argc, char** argv)
   auto param = rcl_interfaces::msg::Parameter();
   param.name = "admittance.selected_axes";
   param.value.type = 6;
-  param.value.bool_array_value = std::vector<bool>(6, false);
+  param.value.bool_array_value = std::vector(6, false);
   param.value.bool_array_value.at(0) = true;
   param.value.bool_array_value.at(1) = true;
   param.value.bool_array_value.at(2) = true;
@@ -110,10 +109,6 @@ int main(int argc, char** argv)
   pose_stamped.pose = target_pose;
   pose_stamped.pose.position.z = 0.2;
 
-
-// # The possible goal states for the model to plan for. Each element of
-// # the array defines a goal region. The goal is achieved
-// # if the constraints for a particular region are satisfied
   item1.req.goal_constraints.push_back(kinematic_constraints::constructGoalConstraints(std::string("panda_link7"), pose_stamped));
 
   auto item2 = item1;
@@ -138,9 +133,9 @@ int main(int argc, char** argv)
 
   moveit::planning_interface::MoveGroupInterface::Plan plan;
 
-  if (service_response->response.error_code.val == moveit::core::MoveItErrorCode::SUCCESS)
+  if (service_response->response.error_code.val == moveit::planning_interface::MoveItErrorCode::SUCCESS)
   {
-    plan.trajectory = service_response.get()->response.planned_trajectories[0];
+    plan.trajectory_ = service_response.get()->response.planned_trajectories[0];
   }
 
   move_group.execute(plan);
